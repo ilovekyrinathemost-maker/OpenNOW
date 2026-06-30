@@ -88,16 +88,14 @@ export function buildVideoAccelerationCommandLine(
         enableFeatures.push("VideoToolboxVideoEncoder", "UseMetalVideoEncoder");
       }
     } else {
-      // Intel Mac: ANGLE GL + VideoToolbox with VP9 support
+      // Intel Mac: ANGLE GL + VideoToolbox decode with VP9 support
+      // Note: VideoToolboxVideoEncoder is Apple Silicon only; not added for Intel Mac
       switches["use-gl"] = "angle";
       if (preferences.decoderPreference !== "software") {
         enableFeatures.push(
           "VideoToolboxVideoDecoder",
           "VideoToolboxVp9Decoding",
         );
-      }
-      if (preferences.encoderPreference !== "software") {
-        enableFeatures.push("VideoToolboxVideoEncoder");
       }
     }
   }
