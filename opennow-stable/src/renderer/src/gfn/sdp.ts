@@ -504,7 +504,7 @@ export function reorderCodecsForPlatform(
   // Intel Mac: AV1 decode is software-only; prefer H264 then H265.
   const isAppleSilicon = arch === "arm64";
   const priorityOrder: string[] = isAppleSilicon
-    ? ["AV1", "H264", "H265"]
+    ? ["H264", "H265", "AV1"]
     : ["H264", "H265", "AV1"];
 
   console.log(
